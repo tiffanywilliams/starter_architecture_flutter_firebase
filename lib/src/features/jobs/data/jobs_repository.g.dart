@@ -69,7 +69,7 @@ class JobStreamFamily extends Family<AsyncValue<Job>> {
 
   /// See also [jobStream].
   JobStreamProvider call(
-    String jobId,
+    InvalidType jobId,
   ) {
     return JobStreamProvider(
       jobId,
@@ -104,7 +104,7 @@ class JobStreamFamily extends Family<AsyncValue<Job>> {
 class JobStreamProvider extends AutoDisposeStreamProvider<Job> {
   /// See also [jobStream].
   JobStreamProvider(
-    String jobId,
+    InvalidType jobId,
   ) : this._internal(
           (ref) => jobStream(
             ref as JobStreamRef,
@@ -131,7 +131,7 @@ class JobStreamProvider extends AutoDisposeStreamProvider<Job> {
     required this.jobId,
   }) : super.internal();
 
-  final String jobId;
+  final InvalidType jobId;
 
   @override
   Override overrideWith(
@@ -172,7 +172,7 @@ class JobStreamProvider extends AutoDisposeStreamProvider<Job> {
 
 mixin JobStreamRef on AutoDisposeStreamProviderRef<Job> {
   /// The parameter `jobId` of this provider.
-  String get jobId;
+  InvalidType get jobId;
 }
 
 class _JobStreamProviderElement extends AutoDisposeStreamProviderElement<Job>
@@ -180,7 +180,7 @@ class _JobStreamProviderElement extends AutoDisposeStreamProviderElement<Job>
   _JobStreamProviderElement(super.provider);
 
   @override
-  String get jobId => (origin as JobStreamProvider).jobId;
+  InvalidType get jobId => (origin as JobStreamProvider).jobId;
 }
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
